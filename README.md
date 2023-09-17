@@ -8,7 +8,12 @@ This package is implemented with ECMAScript modules. CommonJS is not supported.
 ## Synopsis
 
 ```ts
-import { arrayTypeGuard, isLiteralType, isMaybeObject } from "minimal-type-guard-helpers"
+import {
+  arrayTypeGuard,
+  isLiteralType,
+  isMaybeObject,
+  objectTypeGuard
+} from "minimal-type-guard-helpers"
 
 export const myItems = ["foo", "bar"] as const
 export type MyItem = (typeof myItems)[number]
