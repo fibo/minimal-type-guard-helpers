@@ -13,6 +13,6 @@
  * ```
  */
 export const isLiteralType =
-	<Type>(list: readonly string[]) =>
-	(arg: unknown): arg is Type =>
-		typeof arg === "string" && list.includes(arg)
+  <Type>(list: readonly string[]) =>
+  (arg: unknown): arg is Type =>
+    typeof arg === "string" && list.includes(arg)

@@ -1,4 +1,18 @@
 /**
+ * Use `MaybeObject` generic to get a type that has same attributes as
+ * input `T` typed as `unknown`.
+ *
+ * @example
+ *
+ * ```ts
+ * type Foo = { bar: boolean }
+ *
+ * type MaybeFoo = MaybeObject<Foo>
+ * ```
+ */
+export type MaybeObject<T extends object> = { [K in keyof T]: unknown }
+
+/**
  * Use `isMaybeObject` as a _type guard_ helper.
  *
  * @example
@@ -12,10 +26,9 @@
  * ```
  */
 export const isMaybeObject = <T extends object>(
-	arg: unknown
-): arg is {
-	[K in keyof T]: unknown
-} => typeof arg === "object" && arg !== null && !Array.isArray(arg)
+  arg: unknown
+): arg is MaybeObject<T> =>
+  typeof arg === "object" && arg !== null && !Array.isArray(arg)
 
 /**
  * Use `objectTypeGuard` to create a _type guard_ on object types.
@@ -31,6 +44,6 @@ export const isMaybeObject = <T extends object>(
  * ```
  */
 export const objectTypeGuard =
-	<T extends object>(check: (obj: { [K in keyof T]: unknown }) => boolean) =>
-	(arg: unknown): arg is T =>
-		isMaybeObject<T>(arg) && check(arg)
+  <T extends object>(check: (obj: MaybeObject<T>) => boolean) =>
+  (arg: unknown): arg is T =>
+    isMaybeObject<T>(arg) && check(arg)

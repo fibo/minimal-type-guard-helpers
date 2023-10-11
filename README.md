@@ -1,8 +1,7 @@
 # minimal-type-guard-helpers
 
-> minimal type-guard helpers
+> provides few helpers to create _type guards_
 
-It provides few helpers to create type-guards.
 This package is implemented with ECMAScript modules. CommonJS is not supported.
 
 ## Synopsis
@@ -36,4 +35,3 @@ const isFoo = objectTypeGuard<Foo>(({ bar }) => {
 ## License
 
 [MIT](https://fibo.github.io/mit-license)
-
